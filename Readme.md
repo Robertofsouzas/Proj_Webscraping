@@ -6,6 +6,8 @@ Este projeto realiza web scraping no site do Mercado Livre para coletar informa�
 
 O objetivo deste projeto é automatizar a extração de dados do Mercado Livre, processá-los com o Pandas e armazená-los em um banco de dados SQL Server. Além disso, será criada uma dashboard interativa com o Streamlit para visualização e análise dos dados coletados.
 
+O foco principal do projeto é extrair dados de notebooks, com o objetivo de realizar análises comparativas entre notebooks da marca Samsung e seus concorrentes.
+
 ## Tecnologias Utilizadas
 
 - **Scrapy**: Framework para realizar o web scraping.
