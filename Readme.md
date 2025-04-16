@@ -57,6 +57,4 @@ Abaixo está uma ilustração do pipeline de todo o processo de ETL (Extração,
 3. **Carregamento**: Os dados transformados são armazenados no banco de dados SQL Server.
 4. **Análise**: Os dados são visualizados e analisados em uma dashboard interativa criada com Streamlit.
 
-![Pipeline do Processo ETL][def]
-
-[def]: pipeline_etl.png
+![Pipeline do Processo ETL](imagens/pipeline_etl.png)
