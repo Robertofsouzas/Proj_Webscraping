@@ -1,0 +1,44 @@
+services:
+  airflow:
+    image: apache/airflow:2.6.3
+    container_name: airflow
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////app/airflow/airflow.db
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    volumes:
+      - ./airflow:/app/airflow
+    ports:
+      - "8081:8080"
+    command: >
+      bash -c "airflow db init && airflow scheduler & airflow webserver"
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: webscraping_app
+    volumes:
+      - .:/app
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - airflow
+
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: streamlit_dashboard
+    volumes:
+      - .:/app
+    ports:
+      - "8502:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - app
+    command: >
+      streamlit run src/dashboard/app.py --server.port=8501 --server.address=0.0.0.0

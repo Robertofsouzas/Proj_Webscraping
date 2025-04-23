@@ -1,18 +1,18 @@
-# Arquivos do sistema
-.DS_Store
-Thumbs.db
-
-# Arquivos do Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Ambientes virtuais
-venv/
-env/
-*.env
-
-# Logs e arquivos temporários
+# Ignorar arquivos temporários do sistema
 *.log
 *.tmp
+*.swp
+
+# Ignorar dependências do Python
+__pycache__/
+*.pyc
+
+# Ignorar banco de dados do Airflow
+airflow/airflow.db
+
+# Ignorar pastas do Docker
+docker/__pycache__/
+docker/*.pyc
+
+# Ignorar arquivos do ambiente virtual
+.venv/
